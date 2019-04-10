@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import NewPost from './NewPost';
+import CreatePost from './containers/CreatePost';
+import PostList from './containers/PostList';
 
 
 class App extends Component {
@@ -8,10 +9,10 @@ class App extends Component {
       <div className="container">
         <div className="row">
           <div className="col-md-6">
-            <NewPost />
+            <CreatePost />
           </div>
           <div className="col-md-6">
-            Display posts
+            <PostList />
           </div>
         </div>
       </div>

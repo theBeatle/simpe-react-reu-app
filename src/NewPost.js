@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 
 export default class NewPost extends Component {
-    constructor() {
-        super();
-        this.state = {
+    state = {
             title: '',
             body: '',
         }
-    }
+    
 
     handleInputChange = event => {
         this.setState({ [event.target.name]: event.target.value });
@@ -16,7 +14,7 @@ export default class NewPost extends Component {
     handleReset = () => {
         this.setState({
             title: '',
-            body: ''
+            body: '',
         });
     }
 
@@ -24,6 +22,7 @@ export default class NewPost extends Component {
         event.preventDefault();
         if (this.state.title.trim() && this.state.body.trim()) {
             console.log(this.state);
+            this.props.onAddPost(this.state);//add #1
             this.handleReset();
         }
     }
@@ -37,7 +36,7 @@ export default class NewPost extends Component {
                             placeholder="Title"
                             name="title"
                             className="form-control"
-                            onChange={this.onChange}
+                            onChange={this.handleInputChange}
                             value={this.state.title} />
                     </div>
                     <div className="form-group">
@@ -47,17 +46,15 @@ export default class NewPost extends Component {
                             placeholder="Body"
                             name="body"
                             className="form-control"
-                            onChange={this.onChange}
+                            onChange={this.handleInputChange}
                             value={this.state.body} />
                     </div>
                     <div className="form-group">
                         <button type="submit" className="btn btn-primary">Add new post</button>
-                        <button type="reset" className="btn btn-warning">Reset form</button>
+                        <button type="reset" className="btn btn-warning" onReset={ () =>  this.handleReset()} >Reset form</button>
                     </div>
                 </form>
             </div>
         );
     }
-
-
 }

@@ -1,4 +1,4 @@
-import { connect } from 'redux';
+import { connect } from 'react-redux';
 import { createPost } from '../actions';
 import NewPost from '../NewPost';
 
